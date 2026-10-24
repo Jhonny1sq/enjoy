@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="Retro emulator">
+  <rect width="960" height="540" fill="#151a22"/>
+  <rect x="260" y="120" width="440" height="250" rx="22" fill="#232a36" stroke="#5eead4" stroke-width="8"/>
+  <rect x="310" y="165" width="340" height="120" rx="8" fill="#0a0c10"/>
+  <circle cx="380" cy="330" r="22" fill="#5eead4"/><circle cx="580" cy="330" r="22" fill="#f87171"/>
+  <text x="480" y="460" text-anchor="middle" fill="#e6ecf5" font-family="monospace" font-size="40" letter-spacing="8">RETRO</text>
+</svg>
