@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arcade</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-glow-1"></div>
+  <div class="bg-glow-2"></div>
+  <div class="bg-custom"></div>
+
+  <header class="masthead">
+    <div class="masthead-row">
+      <a class="wordmark" href="./index.html">Arcade</a>
+      <div class="masthead-actions">
+        <label class="find">
+          <span class="find-label">Search</span>
+          <input id="search" type="search" placeholder="Title, genre, or engine" autocomplete="off" spellcheck="false">
+        </label>
+        <button id="settings-btn" class="icon-btn" aria-label="Settings" title="Settings">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <nav id="shelf-nav" class="shelf-nav" aria-label="Collection shelves"></nav>
+  </header>
+
+  <aside id="settings-panel" class="settings-panel hidden" aria-label="Settings">
+    <div class="settings-head">
+      <h2>Appearance</h2>
+      <button id="settings-close" class="icon-btn" aria-label="Close">✕</button>
+    </div>
+
+    <div class="settings-group">
+      <label class="settings-label">Theme</label>
+      <div class="theme-options">
+        <button class="theme-swatch" data-theme="dark" aria-label="Dark">
+          <span class="swatch-preview swatch-dark"></span>
+          <span class="swatch-name">Dark</span>
+        </button>
+        <button class="theme-swatch" data-theme="light" aria-label="Light">
+          <span class="swatch-preview swatch-light"></span>
+          <span class="swatch-name">Light</span>
+        </button>
+        <button class="theme-swatch" data-theme="midnight" aria-label="Midnight">
+          <span class="swatch-preview swatch-midnight"></span>
+          <span class="swatch-name">Midnight</span>
+        </button>
+        <button class="theme-swatch" data-theme="amber" aria-label="Amber">
+          <span class="swatch-preview swatch-amber"></span>
+          <span class="swatch-name">Amber</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="settings-group">
+      <label class="settings-label" for="bg-picker">Custom background</label>
+      <div class="bg-picker-row">
+        <input type="color" id="bg-picker" value="#050508">
+        <button id="bg-reset" class="text-btn">Reset</button>
+      </div>
+    </div>
+
+    <div class="settings-group">
+      <label class="settings-label">
+        <input type="checkbox" id="grid-toggle" checked>
+        Show grid background
+      </label>
+      <label class="settings-label">
+        <input type="checkbox" id="glow-toggle" checked>
+        Show ambient glow
+      </label>
+    </div>
+  </aside>
+
+  <div id="settings-overlay" class="settings-overlay hidden"></div>
+
+  <main class="stage">
+    <section id="empty-state" class="empty hidden">
+      <p class="empty-title">Nothing in the collection</p>
+      <p class="empty-sub">Add a folder to <code>games/</code> and an entry in <code>data/games.js</code>.</p>
+    </section>
+
+    <section id="error-state" class="empty hidden">
+      <p class="empty-title">Catalog failed to load</p>
+      <p class="empty-sub">Could not read <code>data/games.js</code>. Check the console.</p>
+    </section>
+
+    <div id="catalog" class="catalog" aria-label="game list"></div>
+  </main>
+
+  <footer class="colophon">
+    <span>Local collection</span>
+    <span id="count">0 titles</span>
+  </footer>
+
+  <template id="card-tpl">
+    <a class="card" href="#" target="_blank" rel="noopener noreferrer">
+      <div class="card-thumb">
+        <img alt="" loading="lazy">
+        <span class="card-fallback" aria-hidden="true"></span>
+      </div>
+      <div class="card-meta">
+        <h3 class="card-name"></h3>
+        <p class="card-desc"></p>
+        <span class="card-engine"></span>
+      </div>
+    </a>
+  </template>
+
+  <script src="data/games.js"></script>
+  <script src="main.js" defer></script>
+</body>
+</html>

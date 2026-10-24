@@ -1,0 +1,9 @@
+﻿games/
+Build/
+*.unityweb
+*.data
+*.wasm
+*.mem
+*.zip
+*.rar
+*.7z
